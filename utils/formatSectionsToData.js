@@ -1,5 +1,6 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
+const fetch = require('node-fetch')
 
 
 const desc_prompt = 
@@ -23,14 +24,22 @@ async function formatDescSection(doesBreak) {
 
 function formatTOC(sections) {
     let text = '## Table of Contents\n\n'
-    for (let index = 1; index < Object.keys(sections).length+1; index++) {
-        text += `${index}.  [${Object.keys(sections)[index]}](#${Object.keys(sections)[index].toLowerCase()})\n`
+    for (let index = 1; index < Object.keys(sections).length; index++) {
+        if (Object.keys(sections)[index] !== "Description" && Object.keys(sections)[index] !== "Table of Contents") {
+            text += `${index}.  [${Object.keys(sections)[index]}](#${Object.keys(sections)[index].toString().toLowerCase().replace(" ","_")})\n\n`
+        }
     }
+
+    if (sections["Table of Contents"]) {
+        text += `---\n\n`
+    }
+
+    return text
 }
 
 
 const inst_prompt = 
-`## Installation
+`## [Installation](#installation)
 <!-- Here you should enter how to install your project. You can use the outline below, or create one yourself -->
 <!-- If you would like to have images in your instructions, enclose them like so: ![Image name](image link or relative path) -->
 
@@ -112,7 +121,7 @@ async function formatLicense(doesBreak) {
         }
         return array
     }
-    let response = await inquirer.prompt(
+    let response = await inquirer.prompt([
         {
             type: 'list',
             name: 'license',
@@ -124,7 +133,7 @@ async function formatLicense(doesBreak) {
             name: 'git_user',
             message: 'What is the github username you will put the license under?'
         }
-    )
+    ])
     
     let today = new Date()
     let text = `## License\n\n Copyright (c) ${today.getFullYear()} ${response.git_user} Licensed under the ${response.license} license.\n\n`
@@ -156,14 +165,33 @@ async function formatContSection(doesBreak) {
 }
 
 const tests_prompt = 
-`## Contributing
+`## Tests
 <!-- Here you should enter how you have tested the project, and possibly any images or videos demonstrating it's use -->
 <!-- You can format your images or videos like this: ![Image or video name](image/video link or relative path) -->\n\n`
-async function formatContSection(doesBreak) {
+async function formatTests(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
-        message: 'To create your contributing section',
+        message: 'To create your tests section',
+        default: tests_prompt
+    })
+
+    let text = `${response.user_text}\n\n`
+    if (doesBreak) {
+        text += `---\n`
+    }
+
+    return text
+}
+
+const questions_prompt = 
+`## Questions
+<!-- Here you should enter common or percieved questions and their answers. -->\n\n`
+async function formatQuestions(doesBreak) {
+    let response = await inquirer.prompt({
+        type: 'editor',
+        name: 'user_text',
+        message: 'To create your questions section',
         default: tests_prompt
     })
 
@@ -228,7 +256,6 @@ async function formatOther(doesBreak) {
 
 async function formatSections(project_name, sections) {
     let data = `# ${project_name}\n\n`
-    console.log(sections);
     for (section in sections) {
         switch (section) {
             case 'Description':
@@ -244,22 +271,22 @@ async function formatSections(project_name, sections) {
                 data += await formatUsageSection(project_name, sections[section])
                 break;
             case 'License':
-                data += await formatLicense(doesBreak)
+                data += await formatLicense(sections[section])
                 break;
             case 'Contributing':
-                data += await formatContSection(doesBreak)
+                data += await formatContSection(sections[section])
                 break;
             case 'Tests':
-                data += await formatTests(doesBreak)
+                data += await formatTests(sections[section])
                 break;
             case 'Questions':
-                data += await formatQuestions(doesBreak)
+                data += await formatQuestions(sections[section])
                 break;
             case 'Finisehd Product':
-                data += await formatFinishedProduct(doesBreak)
+                data += await formatFinishedProduct(sections[section])
                 break;
             case 'Other':
-                data += await formatOther(doesBreak)
+                data += await formatOther(sections[section])
                 break;
         }
     }
