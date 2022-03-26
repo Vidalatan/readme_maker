@@ -75,7 +75,7 @@ async function formatInstSection(doesBreak) {
 }
  
 const usage_prompt = 
-`## How it works
+`## [Usage](#usage)
 <!-- Here you should enter how to use your project. You can use the outline below, or create one yourself -->
 <!-- If you would like to have images in your how to, enclose them like so ![Image name](image link or relative path) -->
 
@@ -136,7 +136,7 @@ async function formatLicense(doesBreak) {
     ])
     
     let today = new Date()
-    let text = `## License\n\n Copyright (c) ${today.getFullYear()} ${response.git_user} Licensed under the ${response.license} license.\n\n`
+    let text = `## [License](#license)\n\n Copyright (c) ${today.getFullYear()} ${response.git_user} Licensed under the ${response.license} license.\n\n`
 
     if (doesBreak) {
         text += `---\n\n`
@@ -146,7 +146,7 @@ async function formatLicense(doesBreak) {
 }
 
 const cont_prompt = 
-`## Contributing
+`## [Contributing](#contributing)
 <!-- Here you should enter how someone should contribute to your project, or what guidelines to follow -->\n\n`
 async function formatContSection(doesBreak) {
     let response = await inquirer.prompt({
@@ -165,7 +165,7 @@ async function formatContSection(doesBreak) {
 }
 
 const tests_prompt = 
-`## Tests
+`## [Tests](#tests)
 <!-- Here you should enter how you have tested the project, and possibly any images or videos demonstrating it's use -->
 <!-- You can format your images or videos like this: ![Image or video name](image/video link or relative path) -->\n\n`
 async function formatTests(doesBreak) {
@@ -185,14 +185,14 @@ async function formatTests(doesBreak) {
 }
 
 const questions_prompt = 
-`## Questions
+`## [Questions](#questions)
 <!-- Here you should enter common or percieved questions and their answers. -->\n\n`
 async function formatQuestions(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
         message: 'To create your questions section',
-        default: tests_prompt
+        default: questions_prompt
     })
 
     let text = `${response.user_text}\n\n`
@@ -205,7 +205,7 @@ async function formatQuestions(doesBreak) {
 
 
 async function formatFinishedProduct(project_name, doesBreak) {
-    let text = `## Finished Product\n\n`
+    let text = `## [Finished Product](#finished_product)\n\n`
     let response = await inquirer.prompt([
         {
         type: 'input',
@@ -235,7 +235,7 @@ async function formatFinishedProduct(project_name, doesBreak) {
 }
 
 const other_prompt = 
-`## Misc/Other
+`## [Misc/Other](other)
 <!-- This is a miscellaneous/other section that is completely up to you. Have fun with it!-->\n\n`
 async function formatOther(doesBreak) {
     let response = await inquirer.prompt({
