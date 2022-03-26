@@ -1,7 +1,6 @@
-const genMark = require('./utils/generateMarkdown');
 const fs = require('fs');
 const inquirer = require('inquirer');
-const { format } = require('path');
+const format = require('./utils/formatSectionsToData.js');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -14,28 +13,29 @@ const questions = [
         type: 'checkbox',
         name: 'included_sections',
         message: 'What type of sections would you like to include?',
-        pageSize: 5,
-        loop: false,
+        pageSize: 15,
         choices: 
         [
-            new inquirer.Separator('Most common'),
-            {name: 'What is it?', value: 'what_section', checked: true},
-            {name: 'Purpose', value: 'purpose', checked: true},
-            {name: 'How it works', value: 'how_section', checked: true},
-            {name: 'Finished Product', value: 'finished_section', checked: true},
-            new inquirer.Separator('Other sections'),
-            {name: 'License', value: 'license'},
-            {name: 'Contributers', value: 'cont'},
-            {name: 'Footnotes', value: 'footnotes'},
-            {name: 'Other', value: 'other'}
+            new inquirer.Separator('---Most common---'),
+            {name: 'Description', checked: true},
+            {name: 'Table of Contents', checked: true},
+            {name: `Installation`, checked: true},
+            {name: 'Usage', checked: true},
+            new inquirer.Separator('---Other sections---'),
+            {name: 'License'},
+            {name: 'Contributing'},
+            {name: 'Tests'},
+            {name: 'Questions'},
+            {name: 'Finished Product'},
+            {name: 'Other'}
         ]
     }
 ];
 
 
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(`./output/${fileName}`, data, err => err ? console.error(err) : console.log('Success!'))
+}
 
 
 
@@ -46,8 +46,9 @@ async function includeBreaks(sections) {
             type: 'checkbox',
             name: 'breaks',
             message: 'Please select which sections should include line breaks below them:\n(Selecting none of the options will mean no line breaks will be included)',
+            pageSize: 15,
             choices: () => {
-                let array = [...sections]
+                let array = [(new inquirer.Separator('---Top of List---')),...sections,(new inquirer.Separator('---Bottom of List'))]
                 array.pop()
                 return array
             }
@@ -69,40 +70,9 @@ async function includeBreaks(sections) {
 async function init() {
     let answers = await inquirer.prompt(questions)
     answers.sections = await includeBreaks(answers.included_sections)
-    console.log(answers);
+    let data = await format.formatSections(answers.project_name, answers.sections)
+    writeToFile(`${answers.project_name}-README.md`, data)
 }
 
 // Function call to initialize app
 init();
-
-
-
-
-// for (let section of answers) {
-//     switch (section) {
-//         case 'what_section':
-//             writeWhatSection()
-//             break;
-//         case 'purpose':
-//             writePurpose()
-//             break;
-//         case 'how_section':
-//             writeHowTo()
-//             break;
-//         case 'finished_section':
-//             writeFinishedProduct()
-//             break;
-//         case :
-            
-//             break;
-//         case :
-            
-//             break;
-//         case :
-            
-//             break;
-//         case :
-            
-//             break;
-//     }
-// }
