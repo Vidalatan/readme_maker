@@ -1,121 +1,117 @@
-# 09 Node.js Homework: Professional README Generator
+# README Maker
 
-## Your Task
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-When creating an open source project on GitHub, it’s important to have a high-quality README for the app. This should include what the app is for, how to use the app, how to install it, how to report issues, and how to make contributions&mdash;this last part increases the likelihood that other developers will contribute to the success of the project. 
+## Description
+<!-- Here you should enter a little about your project. -->
 
-You can quickly and easily create a README file by using a command-line application to generate one. This allows the project creator to devote more time to working on the project.
+A README Maker that utilizes [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) and [node-fetch](https://github.com/node-fetch/node-fetch). The README Maker guides the user through several prompts to allow them to conveniently make a professional looking README file. It includes all sections you would commonly see, as well as a couple of extra sections in case the user wants to add additional content.
 
-Your task is to create a command-line application that dynamically generates a professional README.md file from a user's input using the [Inquirer package](https://www.npmjs.com/package/inquirer). Review the [Professional README Guide](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide) as a reminder of everything that a high-quality, professional README should contain. 
+(Yes this README was made entirely with this application)
 
-The application will be invoked by using the following command:
+## Table of Contents
 
-```bash
-node index.js
-```
+1.  [Installation](#installation)
 
-Because this application won’t be deployed, you’ll also need to provide a link to a walkthrough video that demonstrates its functionality. Revisit the Screencastify Tutorial in the prework as a refresher on how to record video from your computer. You’ll need to submit a link to the video _and_ add it to the README of your project.
+2.  [Usage](#usage)
 
+3.  [License](#license)
 
-## User Story
+4.  [Contributing](#contributing)
 
-```md
-AS A developer
-I WANT a README generator
-SO THAT I can quickly create a professional README for a new project
-```
+5.  [Tests](#tests)
 
-## Acceptance Criteria
+6.  [Questions](#questions)
 
-```md
-GIVEN a command-line application that accepts user input
-WHEN I am prompted for information about my application repository
-THEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-WHEN I enter my project title
-THEN this is displayed as the title of the README
-WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-WHEN I choose a license for my application from a list of options
-THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-WHEN I enter my GitHub username
-THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-WHEN I enter my email address
-THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-WHEN I click on the links in the Table of Contents
-THEN I am taken to the corresponding section of the README
-```
-
-## Getting Started
-
-Here are some guidelines to help you get started:
-
-* Create a `.gitignore` file and include `node_modules/` and `.DS_Store/` so that your `node_modules` directory isn't tracked or uploaded to GitHub. Be sure to create your `.gitignore` file before installing any npm dependencies.
-
-* Make sure that your repo includes a `package.json` with the required dependencies. You can create one by running `npm init` when you first set up the project, before installing any dependencies.
-
-* Include a video of the typical user flow through your application. This includes views of the prompts and the responses after their selection.
-
-* Include any other screenshots you deem necessary to help someone who has never been introduced to your application understand the purpose and function of it. This is how you will communicate to potential employers or other developers in the future what you built and why, and to show how it works.
-
-## Grading Requirements
-
-> **Note**: If a homework assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This homework is graded based on the following criteria: 
-
-### Deliverables: 20%
-
-* A sample README generated using the application must be submitted.
-
-* Your GitHub repository containing your application code.
-
-### Walkthrough Video: 27%
-
-* A walkthrough video that demonstrates the functionality of the README generator must be submitted, and a link to the video should be included in your README file.
-
-* The walkthrough video must demonstrate how a user would invoke the application from the command line.
-
-* The walkthrough video must demonstrate how a user would enter responses to all of the prompts in the application.
-
-* The walkthrough video must demonstrate a generated README that matches the user input and has a functioning table of contents.
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-	* Uses the [Inquirer package](https://www.npmjs.com/package/inquirer).
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README with description and a link to walkthrough video.
-
-
-## Review
-
-You are required to submit the following for review:
-
-* A walkthrough video demonstrating the functionality of the application.
-
-* A sample README.md file for a project repository generated using your application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
+7.  [Finished Product](#finished-product)
 
 ---
 
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+## [Installation](#installation)
+<!-- Here you should enter how to install your project. You can use the outline below, or create one yourself -->
+<!-- If you would like to have images in your instructions, enclose them like so: ![Image name](image link or relative path) -->
+
+<!-- Make sure to have a '>' character before each new line -->
+>## Step One
+>Get the code.
+>
+>You can either clone the repository, or download it as a zip file and unzip them to wherever you prefer to keep it.
+
+>## Step Two
+>Install dependencies.
+>
+>Open up a terminal at the location of the 'readme_maker' and run npm install. This should install all the dependencies required to run the application.
+
+>## Step Three
+>Double check that all dependencies were installed.
+>
+>Running the npm install command should have installed [inquirer](https://github.com/SBoudrias/Inquirer.js/) and [node-fetch](https://github.com/node-fetch/node-fetch)
+
+## [Usage](#usage)
+<!-- Here you should enter how to use your project. You can use the outline below, or create one yourself -->
+<!-- If you would like to have images in your how to, enclose them like so ![Image name](image link or relative path) -->
+
+<!-- Make sure to have a '>' character before each new line -->
+>## Step One
+>To run the app, first make sure your terminal is located at the 'readme_maker' directory.
+
+>## Step Two
+>Then, enter 'node index.js' into the terminal
+>
+>It should begin with a prompt asking for the project name
+
+>## Step Three
+>Follow the prompts as they are given. Some prompts may open up a text editor (usually notepad or vim depending on your OS).
+>
+>If you do not see a text editor appear, check to see if it opened up behind another window (it does that sometimes).
+
+>## Exiting
+>If you wish to cancel out of the app before finishing with the prompts:
+>On most terminals run through windowsOS, press 'ctrl + c'
+>On most terminals run through macOS, press 'Command + . '
+
+---
+
+## [License](#license)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+ Copyright (c) 2022 Vidalatan Licensed under the MIT License license.
+
+---
+
+## [Contributing](#contributing)
+<!-- Here you should enter how someone should contribute to your project, or what guidelines to follow -->
+
+When contributing to this repository, please first discuss the change you wish to make via email.
+
+### Pull Request Process
+1. Ensure any install or build dependencies are removed before requesting a pull on the build.
+2. Update the README.md with details of changes to the interface
+3. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
+
+
+
+## [Tests](#tests)
+<!-- Here you should enter how you have tested the project, and possibly any images or videos demonstrating it's use -->
+<!-- You can format your images or videos like this: ![Image or video name](image/video link or relative path) -->
+
+The current build of this app has been tested for all sections and optional breaks added. Below is a brief demonstration of the app in use.
+
+![Readme Demo](./assets/images/readme_demo.gif)
+
+Changing the path to save the README file has also been tested.
+
+---
+
+## [Questions](#questions)
+
+ Questions regarding this project should be directed towards @Vidalatan at Vidalatan@gmail.com
+
+## [Finished Product](#finished_product)
+
+![Finished Project Image](./assets/images/FinishedProductImage.png)
+
+Link to live [README Maker](https://vidalatan.github.io/readme_maker)
+
+Link to [Code Repository](https://github.com/vidalatan/readme_maker)
+
