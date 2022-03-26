@@ -49,7 +49,7 @@ async function includeBreaks(sections) {
             pageSize: 15,
             choices: () => {
                 let array = [(new inquirer.Separator('---Top of List---')),...sections,(new inquirer.Separator('---Bottom of List'))]
-                array.pop()
+                array = array.splice(0, array.length - 2)
                 return array
             }
         }

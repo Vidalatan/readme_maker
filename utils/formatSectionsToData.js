@@ -9,6 +9,7 @@ async function formatDescSection(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
+        message: 'To create your description',
         default: desc_prompt
     })
 
@@ -52,6 +53,7 @@ async function formatInstSection(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
+        message: 'To create your installation instructions',
         default: inst_prompt
     })
 
@@ -87,6 +89,7 @@ async function formatUsageSection(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
+        message: 'To create your usage section',
         default: usage_prompt
     })
 
@@ -140,6 +143,7 @@ async function formatContSection(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
+        message: 'To create your contributing section',
         default: cont_prompt
     })
 
@@ -159,6 +163,7 @@ async function formatContSection(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
+        message: 'To create your contributing section',
         default: tests_prompt
     })
 
@@ -208,6 +213,7 @@ async function formatOther(doesBreak) {
     let response = await inquirer.prompt({
         type: 'editor',
         name: 'user_text',
+        message: 'To create your other section',
         default: other_prompt
     })
 
