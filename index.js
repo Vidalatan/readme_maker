@@ -10,6 +10,11 @@ const questions = [
         message: 'What is the project name?'
     },
     {
+        type: 'input',
+        name: 'user_gitName',
+        message: 'What is your github username?'
+    },
+    {
         type: 'checkbox',
         name: 'included_sections',
         message: 'What type of sections would you like to include?',
@@ -78,7 +83,7 @@ async function includeBreaks(sections) {
 async function init() {
     let answers = await inquirer.prompt(questions)
     answers.sections = await includeBreaks(answers.included_sections)
-    let data = await format.formatSections(answers.project_name, answers.sections)
+    let data = await format.formatSections(answers.project_name, answers.sections, answers.user_gitName)
     writeToFile(`${answers.project_name}-README.md`, data)
 }
 
