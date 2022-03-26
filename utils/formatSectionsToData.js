@@ -268,7 +268,7 @@ async function formatSections(project_name, sections) {
                 data += await formatInstSection(sections[section])
                 break;
             case 'Usage':
-                data += await formatUsageSection(project_name, sections[section])
+                data += await formatUsageSection(sections[section])
                 break;
             case 'License':
                 data += await formatLicense(sections[section])
@@ -282,8 +282,8 @@ async function formatSections(project_name, sections) {
             case 'Questions':
                 data += await formatQuestions(sections[section])
                 break;
-            case 'Finisehd Product':
-                data += await formatFinishedProduct(sections[section])
+            case 'Finished Product':
+                data += await formatFinishedProduct(project_name, sections[section])
                 break;
             case 'Other':
                 data += await formatOther(sections[section])

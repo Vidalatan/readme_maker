@@ -33,8 +33,16 @@ const questions = [
 ];
 
 
-function writeToFile(fileName, data) {
-    fs.writeFile(`./output/${fileName}`, data, err => err ? console.error(err) : console.log('Success!'))
+async function writeToFile(fileName, data) {
+    let set = await inquirer.prompt(
+        {
+            type: 'input',
+            name: 'path',
+            message: 'Please enter the full path you would like the file saved to (Default will save the file to the output folder located within this app)',
+            default: `./output/`
+        }
+    )
+    fs.writeFile(`${set.path}${fileName}`, data, err => err ? console.error(err) : console.log('Success!'))
 }
 
 
