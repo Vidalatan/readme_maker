@@ -47,7 +47,7 @@ async function writeToFile(fileName, data) {
             default: `./output/`
         }
     )
-    fs.writeFile(`${set.path}${fileName}`, data, err => err ? console.error(err) : console.log('Success!'))
+    fs.writeFile(`${set.path}${fileName}`, data, err => err ? console.error(err) : console.log(`Success! Created ${fileName} at ${set.path}`))
 }
 
 

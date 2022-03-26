@@ -273,7 +273,6 @@ async function formatOther(doesBreak) {
 
 async function formatSections(project_name, sections, user_gitName) {
     let data = ''
-    console.log(sections);
     for (section in sections) {
         switch (section) {
             case 'Description':
@@ -309,7 +308,6 @@ async function formatSections(project_name, sections, user_gitName) {
         }
     }
 
-    console.log(("License" in sections));
     if ("License" in sections) {
         data = `# ${project_name}\n\n${license_badge}\n\n${data}`
     } else {
