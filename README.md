@@ -111,7 +111,6 @@ Changing the path to save the README file has also been tested.
 
 ![Finished Project Image](./assets/images/FinishedProductImage.png)
 
-Link to live [README Maker](https://vidalatan.github.io/readme_maker)
 
 Link to [Code Repository](https://github.com/vidalatan/readme_maker)
 
