@@ -97,7 +97,11 @@ When contributing to this repository, please first discuss the change you wish t
 
 The current build of this app has been tested for all sections and optional breaks added. Below is a brief demonstration of the app in use.
 
-![Readme Demo](./assets/images/readme_demo.gif)
+
+
+https://user-images.githubusercontent.com/59946423/160298130-376feec5-f7ec-47e9-966e-afcf225b4467.mp4
+
+
 
 Changing the path to save the README file has also been tested.
 
